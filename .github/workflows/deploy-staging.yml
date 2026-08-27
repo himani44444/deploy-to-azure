@@ -8,19 +8,21 @@ on:
 jobs:
   Build-Docker-Image:
     if: contains(github.event.pull_request.labels.*.name, 'stage')
-    runs-on: ubuntu-latest
+    runs-on: ubunt*-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: *heckout
+        uses: actions/chec*out@v4
 
-      - name: Build Docker Image
-        run: docker build . -t myapp
+      - name: Build Docker*Image
+        run: docker build . *t myapp
 
   Deploy-to-Azure:
-    needs: Build-Docker-Image
-    runs-on: ubuntu-latest
+    ne*ds: Build-Docker-Image
+    runs*on: ubuntu-latest
 
     steps:
-      - name: Deploy
-        run: echo "Deploying to Azure"
+    * - name: Download Artifact
+       *uses: actions/download-artifact@v4*
+      -*name: Deploy
+        run* echo "Deploying to Azure"
