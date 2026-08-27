@@ -2,7 +2,8 @@ name: Deploy to staging
 
 on:
   pull_request:
-    types: [labeled]
+    types:
+      - labeled
 
 jobs:
   Build-Docker-Image:
@@ -10,4 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: docker build . -t myapp
