@@ -16,3 +16,11 @@ jobs:
 
       - name: Build Docker Image
         run: docker build . -t myapp
+
+  Deploy-to-Azure:
+    needs: Build-Docker-Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy
+        run: echo "Deploying to Azure"
